@@ -1,8 +1,12 @@
-.loginContainer{
-    
-}
+@import '../../assets/style/variables.scss';
+
 .registerDetail{
     width: 50%;
     border-radius: 10px;
-    border: 2px solid #bac3cc;
+    border: 2px solid #ced4da;
+}
+.successButton{
+    background-color: $success-button-bgcolor !important;
+    border-color: $success-button-color !important;
+    color: black;
 }
