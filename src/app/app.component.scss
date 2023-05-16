@@ -1,0 +1,19 @@
+@import '../assets/style/variables.scss';
+
+.loginStatus{
+    height: 50px;
+    width: 50px;
+    border: 3px solid black;
+    border-radius: 50%;
+    position: relative;
+    .loginSuccessLight{
+        height: 13px;
+        width: 13px;
+        border: 3px solid black;
+        border-radius: 50%;
+        position: absolute;
+        right: -15%;
+        top: 40%;
+        background-color: greenyellow;
+    }
+}
