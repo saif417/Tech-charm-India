@@ -9,37 +9,50 @@
       <li ><a routerLink="/home">Home</a></li>
       <li routerLink="/editor"><a routerLink="/editor">Editor</a></li>
     </div>
-    <div class="register">
+    <div *ngIf="false" class="register">
       <li><a routerLink="/login">Register</a></li>
     </div>
+    <div *ngIf="true">
+      <div class="d-flex align-items-center flex-end">
+        <div class="me-2">!Hi User name</div>
+        <div class="loginStatus">
+          <div class="loginicon d-flex align-items-center justify-content-center">
+            <i class="pi pi-user" style="font-size: 2.5rem"></i>
+            <div class="loginSuccessLight"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </ul>
-<div class="menu-responsive">
-
-  <ul class="menu-bar">
-    <li><a href=""><i class="fa-solid fa-apple-whole"></i></a> </li>
-    <li><a href=""><i class="fa-solid fa-apple-whole"></i> </a></li>
-    <li><a href=""><i class="fa-solid fa-apple-whole"></i></a></li>
-    <li><a href=""><i class="fa-solid fa-apple-whole"></i></a></li>
-  </ul>
-  
+ 
+    
 </div>
+
+<div class="containerBody">
   <div class="sub-container">
-      <div class="left-container">
-        <ul>
-          <li><span><i class="fa-solid fa-apple-whole"></i></span><a href="">page one</a> </li>
-          <li><span><i class="fa-solid fa-apple-whole"></i></span> <a href="">page Two</a></li>
-          <li><span><i class="fa-solid fa-apple-whole"></i></span><a href="">page Three</a></li>
-          <li><span><i class="fa-solid fa-apple-whole"></i></span><a href="">page Fourth</a></li>
-        </ul>
-      </div>
+    <div class="left-container">
+      <ul class="menu-bar p-2">
+        <li><i class="fa-solid fa-magnifying-glass"></i><a href="">one</a> </li>
+        <li><i class="fa-solid fa-magnifying-glass"></i> <a href="">Two</a></li>
+        <li><i class="fa-solid fa-magnifying-glass"></i><a href="">Three</a></li>
+        <li><i class="fa-solid fa-magnifying-glass"></i><a href="">Fourth</a></li>
+      </ul>
+    </div>
 
-      <div class="right-container">
-        <router-outlet></router-outlet>
-      </div>
+    <div class="right-container">
+      <router-outlet></router-outlet>
+    </div>
   </div>
-
 </div>
 
+
+
+ 
+  <a class="nav-link" routerLink="/login">Registor</a>
+
+
+
+<!-- </nav> -->
 
 
 <!-- <app-home></app-home> -->
