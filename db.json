@@ -1,0 +1,23 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "name": "faisal",
+      "email": "faisal@gmail.com",
+      "mobile": "998877887"
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "signup": {
+    "name": "saif",
+    "email": "test@gmail.com",
+    "mobile": "9898989898",
+    "password": "5678"
+  }
+}
