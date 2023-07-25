@@ -15,7 +15,6 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
-  registrationData: any;
 
 
   constructor(private formBuilder: FormBuilder, private apiService : TechCharmAPiService, private http: HttpClient, private router: Router, private auth:AuthService) { }
@@ -45,12 +44,16 @@ get f(): { [key: string]: AbstractControl } {
   return this.loginForm.controls 
 }
 
-  login(){
-    console.log(1,this.loginForm)
+  login() {
+    console.log(1, this.loginForm)
     this.submitted = true;
-    //  this.router.navigate(['/addPost']);
+    this.apiService.loginUser(this.loginForm.value).subscribe(res => {
+      if (res.token) {
+        this.router.navigate(['/addPost']);
+      }
+    });
   }
-
+  
   signupPage(){
     this.router.navigate(['signup'])
   }

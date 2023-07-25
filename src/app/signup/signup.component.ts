@@ -52,9 +52,6 @@ get f(): { [key: string]: AbstractControl } {
   signup(){
     console.log(1,this.myform);
      this.submitted = true;
-    if (this.myform?.invalid) {
-      return;
-    }
 
     // this.http.post<any>("http://localhost:3000/signup", this.myform.value).subscribe(res=> {
     //   alert("done")
@@ -66,21 +63,10 @@ get f(): { [key: string]: AbstractControl } {
       name: this.getUserdetails?.name,
       email: this.getUserdetails?.email,
       password: this.getUserdetails?.password,
-      // id: this.getUserdetails?.id,
-      // name: this.getUserdetails?.name,
-      // email: this.getUserdetails?.email,
-      // password: this.getUserdetails?.password,
-      // dob: this.getUserdetails?.dob,
-      // phone: this.getUserdetails?.phone,
-      // gender: this.getUserdetails?.gender,
-      // userType: this.getUserdetails?.userType,
-      // isDelete: this.getUserdetails?.isDelete,
-      // isActive: this.getUserdetails?.isActive,
-      // createdDate: this.getUserdetails?.createdDate
     }
 
     this.apiService.postAllUsersData(this.myform.value).subscribe(res => {
-      this.getUserdetails = res
+      this.getUserdetails = res;
       console.log(this.getUserdetails, "-------------------------")
       this.router.navigate(['login'])
     });
