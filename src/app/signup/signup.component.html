@@ -1,106 +1,14 @@
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="text-center">
-                    <h1> SignUp Page</h1>
-                </div>
-                <form [formGroup]="myform" (ngSubmit)="signup()">
-                    <div class="form-group">
-                        <div class="mb-3">
-                            <label for="exName">Name</label>
-                            <input type="name" formControlName="name" maxlength="10" class="form-control">
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="mb-3">
-                            <label for="exMobileNo">Mobile Number</label>
-                            <input type="mobile" formControlName="mobile" maxlength="20" class="form-control">
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="mb-3">
-                            <label for="exEmail">Email-Id</label>
-                            <input type="email" formControlName="email" maxlength="20" class="form-control">
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="mb-3">
-                            <label for="exPassword">Password</label>
-                            <input type="password" formControlName="password" maxlength="8" class="form-control">
-
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-dark">SignUp</button>
-
-                    <a style="color: red; margin-top: 10px;" routerLink="/login">Already registerd? click here to login!</a>
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div> -->
-
-
-
-
-
-
-
-
-<!-- <body>
-    <form class="box" [formGroup]="myform" (ngSubmit)="signup()">
-        <div class="form">
-            <h2>SIGN UP</h2>
-            <div class="inputBox">
-                <input formControlName="name" maxlength="20" type="text" required>
-                <span>Name</span>
-                <i></i>
-            </div>
-            <div class="inputBox">
-                <input formControlName="mobile" maxlength="10" type="text" required>
-                <span>Mobile Number</span>
-                <i></i>
-            </div>
-            <div class="inputBox">
-                <input formControlName="email" maxlength="20" type="text" required>
-                <span>Email</span>
-                <i></i>
-            </div>
-            <div class="inputBox">
-                <input formControlName="password" type="password" maxlength="8" required>
-                <span>Password</span>
-                <i></i>
-            </div>
-            <div class="links">
-                <a routerLink="/login">Already registerd? click here to login!</a>
-            </div>
-            <input type="submit" value="Signup">
-        </div>
-    </form>
-</body> -->
-
-
-
 <div class="wrapper">
     <div class="form-left">
         <h2 class="text-uppercase">TechCharm</h2>
         <p>
-            Spreading the Magic of technology Where technology meets charm Unlocking the Charm of Innovation Tech Charm where Dreams Take Flight Powered by Tech, Driven by Charm.
+            Spreading the Magic of technology Where technology meets charm Unlocking the Charm of Innovation Tech Charm
+            where Dreams Take Flight Powered by Tech, Driven by Charm.
         </p>
         <p class="text">
             <span>Why TechCharm?:</span>
-            Charming Your World with Technology Empowering Tomorrow Innovate with Elegance, Tech Charm Bringing Magic to Technology
+            Charming Your World with Technology Empowering Tomorrow Innovate with Elegance, Tech Charm Bringing Magic to
+            Technology
         </p>
         <div class="form-field">
             <input type="submit" class="account" value="Have an Account?" (click)="loginPage()">
@@ -108,34 +16,56 @@
     </div>
     <form class="form-right" [formGroup]="myform" (ngSubmit)="signup()">
         <h2 class="text-uppercase">SignUp with Us</h2>
-        <div class="row">
-            <div class="mb-3">
-                <label>First Name</label>
-                <input type="text" name="first_name" formControlName="name" id="first_name" class="input-field">
+        <div class="form-group pb-3">
+            <label class="m-0">Full Name</label>
+            <input type="text" formControlName="name" class="form-control form-control-lg"
+                [ngClass]="{ 'is-invalid': submitted && f['name'].invalid }" />
+            <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
+                <div *ngIf="submitted && f['name'].errors">Fullname is required</div>
             </div>
         </div>
-        <div class="mb-3">
-            <label>Mobile No</label>
-            <input type="email" class="input-field" formControlName="mobileNo" name="email" required>
-        </div>
-        <div class="mb-3">
-            <label>Your Email</label>
-            <input type="email" class="input-field" formControlName="email" name="email" required>
-        </div>
-        <div class="row">
-            <div class="mb-3">
-                <label>Password</label>
-                <input type="password" name="pwd" formControlName="password" id="pwd" class="input-field">
+
+        <div class="form-group pb-3">
+            <label class="m-0">Email</label>
+            <input type="text" formControlName="email" class="form-control form-control-lg"
+                [ngClass]="{ 'is-invalid': submitted && f['email'].invalid}" />
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="submitted && f['email'].errors?.['required']">Email is required</div>
+                <div *ngIf="submitted && f['email']?.errors?.['email']">Email is invalid</div>
             </div>
         </div>
-        <!-- <div class="mb-3">
-            <label class="option">I agree to the <a href="#">Terms and Conditions</a>
-                <input type="checkbox" checked>
-                <span class="checkmark"></span>
-            </label>
-        </div> -->
+
+        <div class="form-group pb-3">
+            <label class="m-0">Password</label>
+            <input type="password" formControlName="password" class="form-control form-control-lg"
+                [ngClass]="{ 'is-invalid': submitted && f['password'].invalid}" />
+            <div *ngIf="submitted " class="invalid-feedback">
+                <div *ngIf="submitted && f['password'].errors?.['required']">Password is required</div>
+                <div *ngIf="submitted && f['password'].errors?.['minlength']">
+                    Password must be at least 6 characters
+                </div>
+                <div *ngIf="submitted && f['password'].errors?.['maxlength']">
+                    Username must not exceed 40 characters
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group pb-3">
+            <label class="m-0">Confirm Password</label>
+            <input type="password" formControlName="confirmPassword" class="form-control form-control-lg"
+                [ngClass]="{ 'is-invalid': submitted && f['confirmPassword'].invalid}" />
+            <div *ngIf="submitted " class="invalid-feedback">
+                <div *ngIf="submitted && f['confirmPassword'].errors?.['required']">
+                    Confirm Password is required
+                </div>
+                <div *ngIf=" f['confirmPassword'].errors?.['mustMatch']">
+                    Confirm Password does not match
+                </div>
+            </div>
+        </div>
         <div class="form-field">
             <input type="submit" value="Register" class="register" name="register">
+            <input type="reset" value="Reset" class="reset btn-warning" name="register">
         </div>
     </form>
 </div>

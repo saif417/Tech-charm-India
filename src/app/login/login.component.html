@@ -1,214 +1,3 @@
-<!-- <div class="card m-3">
-  <h5 class="card-header">Angular 8 Reactive Form Validation</h5>
-  <div class="card-body">
-      <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-          <div class="form-row d-flex">
-              <div class="form-group col-5">
-                  <label>Name</label>
-                  <input type="text" formControlName="name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }" />
-                  <div *ngIf="submitted && f['name'].errors" class="invalid-feedback">
-                      <div *ngIf="f['name'].errors['required']">First Name is required</div>
-                  </div>
-              </div>
-              
-          </div>
-
-
-          <div class="form-group">
-              <label>Email</label>
-              <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
-              <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-                  <div *ngIf="f['email'].errors['required']">Email is required</div>
-                  <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
-              </div>
-          </div>
-
-
-          <div class="form-row">
-              <div class="form-group col">
-                  <label>Password</label>
-                  <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['password'].errors }" />
-                  <div *ngIf="submitted && f['password'].errors" class="invalid-feedback">
-                      <div *ngIf="f['password'].errors['required']">Password is required</div>
-                      <div *ngIf="f['password'].errors['minlength']">Password must be at least 6 characters</div>
-                  </div>
-              </div>
-
-
-              <div class="form-row d-flex">
-                <div class="form-group col-5">
-                    <label>DOB</label>
-                    <input type="text" formControlName="dob" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['firstName'].errors }" />
-                    <div *ngIf="submitted && f['dob'].errors" class="invalid-feedback">
-                        <div *ngIf="f['dob'].errors['required']">First Name is required</div>
-                    </div>
-                </div>
-                
-            </div>
-
-            <div class="form-row d-flex">
-                <div class="form-group col-5">
-                    <label>Phone</label>
-                    <input type="number" formControlName="phone" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['phone'].errors }" />
-                    <div *ngIf="submitted && f['phone'].errors" class="invalid-feedback">
-                        <div *ngIf="f['phone'].errors['required']">Phone number is required</div>
-                    </div>
-                </div>
-            </div>
-            
-         <div class="form-row d-flex">
-    <div class="form-group col-5">
-        <label>Gender</label>
-        <select formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['gender'].errors }">
-            <option value="">Select Gender</option>
-            <option value="male">Male</option>
-            <option value="female">Female</option>
-        </select>
-        <div *ngIf="submitted && f['gender'].errors" class="invalid-feedback">
-            <div *ngIf="f['gender'].errors['required']">Gender is required</div>
-        </div>
-    </div>
-</div>
-
-            
-            <div class="form-row d-flex">
-                <div class="form-group col-5">
-                    <label>User Type</label>
-                    <input type="text" formControlName="userType" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['userType'].errors }" />
-                    <div *ngIf="submitted && f['userType'].errors" class="invalid-feedback">
-                        <div *ngIf="f['userType'].errors['required']">User Type is required</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="form-row d-flex">
-                <div class="form-group col-5">
-                    <label>Is Delete</label>
-                    <input type="number" formControlName="isDelete" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['isDelete'].errors }" />
-                    <div *ngIf="submitted && f['isDelete'].errors" class="invalid-feedback">
-                        <div *ngIf="f['isDelete'].errors['required']">Is Delete is required</div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="form-row d-flex">
-                <div class="form-group col-5">
-                    <label>Is Active</label>
-                    <input type="number" formControlName="isActive" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['isActive'].errors }" />
-                    <div *ngIf="submitted && f['isActive'].errors" class="invalid-feedback">
-                        <div *ngIf="f['isActive'].errors['required']">Is Active is required</div>
-                    </div>
-                </div>
-            </div>
-            
-              
-          </div>
-          <div class="form-group form-check">
-              <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f['acceptTerms'].errors }" />
-              <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
-              <div *ngIf="submitted && f['acceptTerms'].errors" class="invalid-feedback">Accept Ts & Cs is required</div>
-          </div>
-          <div class="text-center">
-              <button class="btn btn-primary mr-1">Register</button>
-              <button class="btn btn-secondary" type="reset" (click)="onReset()">Cancel</button>
-          </div>
-      </form>
-  </div>
-</div> -->
-
-
-<!-- Modal -->
-<!-- <button type="button" class="btn btn-primary w-25 successButton" data-bs-toggle="modal" data-bs-target="#registerModel">
-  Register
-</button>
-<div class="modal fade  modal-fade-centered" id="registerModel" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content p-3">
-      <div class="d-flex justify-content-center">
-          <h4>User Detail</h4>
-      </div>
-      <div class="modal-body">
-          <div class="input">
-              <input type="text" placeholder="First Name" class="form-control"><br>
-              <input type="text" placeholder="Last Name" class="form-control">
-          </div>
-      </div>
-      <div class="d-flex justify-content-center">
-        <button type="button" class="btn btn-primary successButton w-25" data-bs-dismiss="modal" aria-label="Close">Done</button>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-
-
-
-
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-6">
-            <div class="card">
-                <div class="text-center">
-                    <h1> Sign In</h1>
-                </div>
-                <form [formGroup]="formvalue" (ngSubmit)="login()">
-                    <div class="form-group">
-                        <div class="mb-3">
-                            <label for="exEmail">Email-Id</label>
-                            <input type="email" formControlName="email" maxlength="20" class="form-control">
-
-                        </div>
-                    </div>
-
-                    <div class="form-group">
-                        <div class="mb-3">
-                            <label for="exPassword">Password</label>
-                            <input type="password" formControlName="password" maxlength="8" class="form-control">
-
-                        </div>
-                    </div>
-
-                    <button type="submit" class="btn btn-dark">SignIn</button>
-
-                    <a style="color: red; margin-top: 10px;" routerLink="/signup">New User? click here to Signup!</a>
-                </form>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</div>
-
-
-
-
-
-<!-- <body>
-    <form class="box" [formGroup]="formvalue" (ngSubmit)="login()">
-        <div class="form">
-            <h2>SIGN IN</h2>
-            <div class="inputBox">
-                <input formControlName="email" maxlength="20" type="text" required>
-                <span>Email</span>
-                <i></i>
-            </div>
-            <div class="inputBox">
-                <input formControlName="password" type="password" maxlength="8" required>
-                <span>Password</span>
-                <i></i>
-            </div>
-            <div class="links">
-                <a routerLink="/signup">New User? click here to Signup!</a>
-            </div>
-            <input type="submit" value="Login">
-        </div>
-    </form>
-</body> -->
-
-
-
 <div class="wrapper">
     <div class="form-left">
         <h2 class="text-uppercase">TechCharm</h2>
@@ -219,39 +8,41 @@
         </p>
         <p class="text">
             <span>Why TechCharm?:</span>
-            Charming Your World with Technology Empowering Tomorrow Innovate with Elegance, Tech Charm Bringing Magic to Technology
+            Charming Your World with Technology Empowering Tomorrow Innovate with Elegance, Tech Charm Bringing Magic to
+            Technology
         </p>
         <div class="form-field">
             <input type="submit" class="account" value="New User?" (click)="signupPage()">
         </div>
     </div>
-    <form class="form-right"  [formGroup]="registerForm" (ngSubmit)="login()">
-        <h2 class="text-uppercase">SignIn with Us</h2>
-        <div class="row">
-            <!-- <div class="mb-3">
-                <label>First Name</label>
-                <input type="text" name="first_name" id="first_name" class="input-field">
-            </div> -->
-        </div>
-        <div class="mb-3">
-            <label>Your Email</label>
-            <input type="email" class="input-field" name="email" formControlName="email" required>
-        </div>
-        <div class="row">
-            <div class="mb-3">
-                <label>Password</label>
-                <input type="password" name="pwd" id="pwd" formControlName="password" class="input-field">
+    <form class="form-right" [formGroup]="loginForm" (ngSubmit)="login()">
+        <h2 class="text-uppercase">Login with Us</h2>
+        <div class="form-group pb-3">
+            <label class="m-0">Email</label>
+            <input type="text" formControlName="email" class="form-control form-control-lg"
+                [ngClass]="{ 'is-invalid': submitted && f['email'].invalid}" />
+            <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
+                <div *ngIf="submitted && f['email'].errors?.['required']">Email is required</div>
+                <div *ngIf="submitted && f['email']?.errors?.['email']">Email is invalid</div>
             </div>
         </div>
-        <!-- <div class="mb-3">
-            <label class="option">I agree to the <a href="#">Terms and Conditions</a>
-                <input type="checkbox" checked>
-                <span class="checkmark"></span>
-            </label>
-        </div> -->
+
+        <div class="form-group pb-3">
+            <label class="m-0">Password</label>
+            <input type="password" formControlName="password" class="form-control form-control-lg"
+                [ngClass]="{ 'is-invalid': submitted && f['password'].invalid}" />
+            <div *ngIf="submitted " class="invalid-feedback">
+                <div *ngIf="submitted && f['password'].errors?.['required']">Password is required</div>
+                <div *ngIf="submitted && f['password'].errors?.['minlength']">
+                    Password must be at least 6 characters
+                </div>
+                <div *ngIf="submitted && f['password'].errors?.['maxlength']">
+                    Username must not exceed 40 characters
+                </div>
+            </div>
+        </div>
         <div class="form-field">
-            <input type="submit" value="SignIn" class="register" name="register" [disabled]="!registerForm.valid">
+            <input type="submit" value="login" class="register" name="register">
         </div>
     </form>
 </div>
-
