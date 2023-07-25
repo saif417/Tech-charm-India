@@ -1,6 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MustMatch } from './password-match.validator';
+import { TechCharmAPiService } from '../service/tech-charm-api.service';
+import { HttpClient } from '@angular/common/http';
+import { Route, Router } from '@angular/router';
+import { AuthService } from '../auth.service';
+// import { NgToastService } from 'ng-angular-popup';
 
 @Component({
   selector: 'app-login',
@@ -8,60 +13,53 @@ import { MustMatch } from './password-match.validator';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  registerForm!: FormGroup;
   loginForm!: FormGroup;
   submitted = false;
-  loginPassword = false;
-  toggleRegisterPage = false;
+  registrationData: any;
 
-  constructor(private formBuilder: FormBuilder) { }
+
+  constructor(private formBuilder: FormBuilder, private apiService : TechCharmAPiService, private http: HttpClient, private router: Router, private auth:AuthService) { }
 
   ngOnInit() {
-      this.registerForm = this.formBuilder.group({
-          firstName: ['test', Validators.required],
-          lastName: ['', Validators.required],
-          email: ['', [Validators.required, Validators.email]],
-          password: ['', [Validators.required, Validators.minLength(6)]],
-          confirmPassword: ['', Validators.required]
-      }, {
-          validator: MustMatch('password', 'confirmPassword')
-      });
-
+      // if(this.auth.isLogedIn()){
+      //   this.router.navigate(['home'])
+      // }
       this.loginForm = this.formBuilder.group({
-          loginEmail: ['', [Validators.required, Validators.email]],
-          loginPassword: ['', [Validators.required]]
-      });
+      email: ['', [Validators.required, Validators.email]],
+      password:  ['',[Validators.required, Validators.minLength(6), 
+        Validators.maxLength(40)], ],})
+    
+  
+        // this.apiService.getAllUsers()
+        // .subscribe(res => console.log(res));
+
+
+        // this.formvalue = this.formBuilder.group({
+        //   email: ['', [Validators.required, Validators.email]],
+        //   password: ['', [Validators.required, Validators.minLength(6)]]
+        // })
+    
   }
 
-  // convenience getter for easy access to form fields
-  get f() { return this.registerForm.controls; }
+get f(): { [key: string]: AbstractControl } {
+  return this.loginForm.controls 
+}
 
-  onRegisterSubmit() {
-      this.submitted = true;
-
-      // stop here if form is invalid
-      if (this.registerForm.invalid) {
-          return;
-      }
-
-      // display form values on success
-      console.log('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerForm.value, null, 4));
+  login(){
+    console.log(1,this.loginForm)
+    this.submitted = true;
+    //  this.router.navigate(['/addPost']);
   }
 
-  submitLoginForm(){
-    console.log(123,this.loginForm)
+  signupPage(){
+    this.router.navigate(['signup'])
   }
 
-  onReset() {
-      this.submitted = false;
-      this.registerForm.reset();
-  }
+  // getLoginForm(){
+  //   this.loginPassword = !this.loginPassword
+  // }
 
-  getLoginForm(){
-    this.loginPassword = !this.loginPassword
-  }
-
-  getToggleRegisterPage(){
-    this.toggleRegisterPage = !this.toggleRegisterPage
-  }
+  // getToggleRegisterPage(){
+  //   this.toggleRegisterPage = !this.toggleRegisterPage
+  // }
 }

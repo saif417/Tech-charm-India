@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../auth.service';
+import { TechCharmAPiService } from '../service/tech-charm-api.service';
 
 @Component({
   selector: 'app-home',
@@ -39,24 +41,50 @@ export class HomeComponent implements OnInit{
       userName: 'confirm'
     },
   ];
+  questionData: any;
+  abc: any;
 
-  constructor(){}
+  constructor(private auth:AuthService,private apiService : TechCharmAPiService){}
 
   ngOnInit(){
     this.listData;
-    console.log(this.listData)
+    // this.apiService.getQuestions().subscribe(data => {
+    //   this.questionData = data
+
+    // });
   }
   
-  postNewData(){
-   let data = {
-    userName : 'test',
-    topic: this.newPostTopic,
-    detail: this.newPostDetail,
-    dateTime: new Date().getFullYear() 
-   }
-   
-   this.listData.push(data)
-   console.log(456,this.listData)
+  // postNewData(){
+  //  let data = {
+  //   userName : 'test',
+  //   topic: this.newPostTopic,
+  //   detail: this.newPostDetail,
+  //   dateTime: new Date().getFullYear() 
+  //  }
+  //  this.listData.push(data)
+  //  console.log(456,this.listData)
+  // }
+
+  postQuestion(){
+    const reqObj = {
+      id: this.questionData?.id,
+      questionId: this.questionData?.questionId,
+      question: this.newPostTopic,
+      questionDescription: this.newPostDetail,
+      createdDate: this.questionData?.data,
+      isActive: true,
+      isDelete: true
+    }
+    this.apiService.postQuestions(reqObj).subscribe(res => {
+      console.log(3,res)
+      this.getAllQuestions();
+    });
+  }
+
+  getAllQuestions() {
+    this.apiService.getQuestions().subscribe(data => {
+      this.questionData = data
+    });
   }
 
 }
