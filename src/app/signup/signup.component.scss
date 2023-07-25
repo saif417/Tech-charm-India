@@ -374,6 +374,21 @@ body{
     font-size: 15px;
 }
 
+.wrapper .reset {
+    float: right;
+    padding: 12px;
+    // background: #63560d;
+    border-top-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+    width: 130px;
+    border: none;
+    margin: 6px 0 50px 0px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+}
+
 .wrapper .register:hover{
     background-color: #3785bde0;
 }
@@ -414,4 +429,17 @@ body{
     .wrapper .form-right{
         padding: 25px;
     }
+}
+
+p {
+    font-family: Lato;
+}
+
+#root {
+    padding: 30px;
+}
+
+.register-form {
+    max-width: 350px;
+    margin: auto;
 }
