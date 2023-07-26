@@ -1,6 +1,6 @@
 <div class="navbar-container">
 
-    <ul class="navigation-bar">
+    <ul class="navigation-bar po">
         <div class="Login align-items-center">
             <li class="insta-images">
                 <img src="../assets/Images/download.jpg" alt="" srcset="">
@@ -9,8 +9,8 @@
             <li><a routerLink="/addPost">Add Post</a></li>
             <li routerLink="/editor"><a routerLink="/editor">Editor</a></li>
         </div>
-        <!-- <div class="row align-items-center">
-            <div class="col-md-5 mx-auto">
+        <div class="row align-items-center">
+            <div class="mx-auto">
                 <div class="input-group">
                     <input class="form-control border-end-0 border rounded-pill" type="search" placeholder="search" id="example-search-input">
                     <span class="input-group-append">
@@ -20,18 +20,18 @@
                     </span>
                 </div>
             </div>
-        </div> -->
+        </div>
         <div *ngIf="false" class="register">
             <li><a routerLink="/login">Register</a></li>
         </div>
         <div *ngIf="true" class="pt-3">
             <div class="d-flex align-items-center flex-end">
-                <div class="me-2">!Hi User name</div>
+                <div *ngIf="userName" class="me-2">!Hi {{userName}}</div>
                 <a (click)="profile()">
                     <div class="loginStatus">
                         <div class="loginicon d-flex align-items-center justify-content-center">
                             <i class="pi pi-user" style="font-size: 2rem"></i>
-                            <div class="loginSuccessLight"></div>
+                            <div *ngIf="userName" class="loginSuccessLight"></div>
                         </div>
                     </div>
                 </a>

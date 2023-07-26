@@ -1,0 +1,48 @@
+<div class="newPostUser  border-bottom  border-5 border-dark d-flex p-2">
+    <div class="userNameNewPostUser pe-2">
+        <div class="userName"></div>
+    </div>
+    <div class="newPostUserContainer">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="inputGroup-sizing-default">Topic</span>
+            <input type="text" class="form-control" [(ngModel)]="newPostTopic" aria-label="Sizing example input" aria-describep-editor-containerdby="inputGroup-sizing-default">
+        </div>
+
+        <div class="card">
+            <p-editor [(ngModel)]="newPostDetail" [style]="{ height: '300px' }" ></p-editor>
+        </div>
+    <div class="postbutton">
+        <button class="btn btn-success mt-2" (click)="postQuestion()">Post</button>
+    </div>
+</div>
+</div>
+
+<!-- latest posted data -->
+
+<div class="postedDataContaoner p-2">
+    <div *ngFor="let data of questionData">
+        <div class="d-flex justify-content-between dateSection mb-2">
+            <span class="">{{data.userName}}</span>
+            <span class="">{{data.dateTime}}</span>
+        </div>
+        <label class="postedheadind mb-2"><span class="text-primary fw-bold">Titile : </span>{{data.question}}</label>
+        <div class="postedDataDetail" [innerHtml]="data.questionDescription"></div>
+    </div>
+</div>
+<div *ngIf="questionData" class="pb-4">
+    <hr>
+    <h2>Your Answer</h2>
+<div class="card">
+    <p-editor [(ngModel)]="postAnswer" [style]="{ height: '300px' }" ></p-editor>
+</div>
+<div class="postbutton">
+    <button class="btn btn-success mt-2" (click)="postQuestion()">Post Your Answer</button>
+</div>
+</div>
+
+
+
+
+
+
+

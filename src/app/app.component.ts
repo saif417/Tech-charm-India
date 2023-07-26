@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router,NavigationEnd } from '@angular/router';
 import { filter } from 'rxjs/operators';
 import { AuthService } from './auth.service';
+import { CommonService } from './service/common.service';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'techCharmIndia';
   ishide: boolean = true;
-  constructor(private router:Router, private auth:AuthService) {
+  userName: any;
+  constructor(private router:Router, private auth:AuthService,private service:CommonService) {
     const events = 
     router.events.
     pipe(
@@ -24,7 +26,14 @@ export class AppComponent {
       } else {
         this.ishide = true
       }
-    })
+    }) 
+  }
+
+  ngOnInit() {
+    this.service.userName.subscribe(res => {
+      this.userName = res;
+      console.log(7,this.userName)
+    });
   }
 
   profile(){

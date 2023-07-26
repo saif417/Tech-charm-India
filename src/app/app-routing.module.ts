@@ -5,13 +5,14 @@ import { LoginComponent } from './login/login.component';
 import { EditorComponent } from './editor/editor.component';
 import { SignupComponent } from './signup/signup.component';
 import { AuthGuard } from './auth.guard';
+import { AddPostComponent } from './add-post/add-post.component';
 
 const routes: Routes = [
   // {path:'',component:HomeComponent},
   // {path: '**', redirectTo:'login',pathMatch:'full'},
   {path: '', redirectTo:'login',pathMatch:'full'},
-  // {path: 'home',component:HomeComponent},
-  {path: 'addPost',component:HomeComponent},
+  {path: 'home',component:HomeComponent},
+  {path: 'addPost',component:AddPostComponent},
   {path: 'login',component:LoginComponent},
   {path: 'editor',component:EditorComponent},
   {path: 'signup',component:SignupComponent}

@@ -5,7 +5,8 @@ import { TechCharmAPiService } from '../service/tech-charm-api.service';
 import { HttpClient } from '@angular/common/http';
 import { Route, Router } from '@angular/router';
 import { AuthService } from '../auth.service';
-// import { NgToastService } from 'ng-angular-popup';
+import { CommonService } from '../service/common.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -15,9 +16,10 @@ import { AuthService } from '../auth.service';
 export class LoginComponent implements OnInit {
   loginForm!: FormGroup;
   submitted = false;
+  public userName = new Subject<any>();
 
-
-  constructor(private formBuilder: FormBuilder, private apiService : TechCharmAPiService, private http: HttpClient, private router: Router, private auth:AuthService) { }
+  constructor(private formBuilder: FormBuilder, private apiService : TechCharmAPiService,
+    private service:CommonService, private http: HttpClient, private router: Router, private auth:AuthService) { }
 
   ngOnInit() {
       // if(this.auth.isLogedIn()){
@@ -48,7 +50,8 @@ get f(): { [key: string]: AbstractControl } {
     console.log(1, this.loginForm)
     this.submitted = true;
     this.apiService.loginUser(this.loginForm.value).subscribe(res => {
-      if (res.token) {
+      if (res.name) {
+        this.service.userName.next(res.name);
         this.router.navigate(['/addPost']);
       }
     });

@@ -11,6 +11,7 @@ import { LoginComponent } from './login/login.component';
 import { EditorComponent } from './editor/editor.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
+import { AddPostComponent } from './add-post/add-post.component';
 // import { NgToastModule } from 'ng-angular-popup';
 
 
@@ -20,7 +21,8 @@ import { SignupComponent } from './signup/signup.component';
     HomeComponent,
     LoginComponent,
     EditorComponent,
-    SignupComponent
+    SignupComponent,
+    AddPostComponent
   ],
   imports: [
     BrowserModule,
