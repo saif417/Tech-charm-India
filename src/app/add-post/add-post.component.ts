@@ -14,7 +14,6 @@ export class AddPostComponent {
   // listData:any = [];
   previousStoreData:any;
   questionData: any;
-  abc: any;
 
   constructor(private auth:AuthService,private apiService : TechCharmAPiService){}
 
