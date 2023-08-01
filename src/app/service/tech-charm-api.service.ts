@@ -29,5 +29,9 @@ export class TechCharmAPiService {
     return this.http.post<any>(this.baseUrl + 'api/Login', data)
   }
 
+  saveAns(data: any){
+    return this.http.post<any>(this.baseUrl + 'api/Comment', data)
+  }
+
 
 }

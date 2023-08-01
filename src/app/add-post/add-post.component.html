@@ -33,7 +33,7 @@
             <span class="input-group-text" id="inputGroup-sizing-default">Topic</span>
             <input type="text" class="form-control" [(ngModel)]="newPostTopic" aria-label="Sizing example input" aria-describep-editor-containerdby="inputGroup-sizing-default">
         </div>
-
+<!-- {{newPostDetail |json}} -->
         <div class="card">
             <p-editor [(ngModel)]="newPostDetail" [style]="{ height: '300px' }" ></p-editor>
         </div>
@@ -44,38 +44,35 @@
 </div>
 
 <!-- latest posted data -->
-
 <div class="postedDataContaoner p-2">
     <div *ngFor="let data of questionData">
+      <!-- 123  {{data |json}} -->
         <div class="d-flex justify-content-between dateSection mb-2">
             <span class="">{{data.userName}}</span>
             <span class="">{{data.dateTime}}</span>
         </div>
-        <label class="postedheadind mb-2"><span class="text-primary fw-bold">Titile : </span>{{data.question}}</label>
-        <div class="postedDataDetail" [innerHtml]="data.questionDescription"></div>
-    </div>
-</div>
-<div *ngIf="questionData" class="pb-4">
-    <hr>
-    <h2>Your Answer</h2>
-<div class="card">
-    <p-editor [(ngModel)]="postAnswer" [style]="{ height: '300px' }" ></p-editor>
-</div>
-<div class="postbutton">
-    <button class="btn btn-success mt-2" (click)="postQuestion()">Post Your Answer</button>
-</div>
-</div>
-
-<!-- latest posted data -->
-
-<div *ngIf="questionData" class="pb-4">
-    <hr>
-    <h2>Your Answer</h2>
-    <div class="card">
-        <p-editor [(ngModel)]="postAnswer" [style]="{ height: '300px' }"></p-editor>
-    </div>
-    <div class="postbutton">
-        <button class="btn btn-success mt-2" (click)="postQuestion()">Post Your Answer</button>
+        <label class="postedheadind mb-2"><span class="text-primary fw-bold">Title : </span>{{data.question}}</label>
+        <div class="postedDataDetail" [innerHtml]="data.questionDescription">Question :</div>
+      <hr> 
+        <div *ngIf="data?.commentLists">Comments</div>
+        <div *ngFor="let data1 of data.commentLists; let i = index">
+            <span class="ps-4">{{i}} </span>
+              <pre class="ms-4  bg-light d-flex" [style]="{ height: '100px' }"> {{data1.content}}</pre>
+         </div>
+        
+        <div *ngIf="openAnswerBox === data.questionId" class="pb-4">
+            <h2>Your Answer</h2>
+        <div class="card">
+            <p-editor [(ngModel)]="postAnswer" [style]="{ height: '100px' }" ></p-editor>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button class="btn btn-success mt-2" (click)="newAnswerPost(data.questionId)">Post Answer</button>
+        </div>
+        </div>
+        <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+            <button *ngIf="openAnswerBox !== data.questionId" class="btn btn-success mt-2"
+              (click)="PostyourAnswer(data.questionId)">Post Your Answer</button>
+          </div>
     </div>
 </div>
 </div>
