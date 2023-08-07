@@ -1,0 +1,20 @@
+<div *ngFor="let data of questionData">
+    <div *ngFor="let data1 of data.commentLists">
+        <pre *ngIf="data1.content" class="ms-4  bg-light d-flex" [style]="{ height: '100px' }"> {{data1?.content}}</pre>
+        <div *ngIf="data1.content" class="text-primary fw-bold">Comments</div>
+    </div>
+    <div class=" border-bottom border-5 border-dark d-grid gap-2 pb-2 d-md-flex justify-content-md-end">
+        <button *ngIf="openAnswerBox !== data?.questionId" class="btn btn-success mt-2" (click)="PostyourAnswer(data?.questionId)">Post
+            Your Answer</button>
+            <div *ngIf="openAnswerBox == data?.questionId" class="pb-4">
+                <h2>Your Answer</h2>
+                <div class="card">
+                    <p-editor [(ngModel)]="postAnswer" [style]="{ height: '100px' }"></p-editor>
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button class="btn btn-success mt-2" (click)="newAnswerPost(data.questionId)">Post
+                        Answer</button>
+                </div>
+            </div>
+    </div>
+</div>

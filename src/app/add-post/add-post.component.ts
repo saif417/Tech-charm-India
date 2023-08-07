@@ -11,16 +11,13 @@ export class AddPostComponent {
   newPostTopic: any;
   newPostDetail: any;
   postAnswer: any;
-  // listData:any = [];
   previousStoreData: any;
   questionData: any;
-  openAnswerBox: any;
-  reqObj!: { commentId: any; content: any; createdDate: any; questionId: any; };
 
   constructor(private auth: AuthService, private apiService: TechCharmAPiService) { }
 
   ngOnInit() {
-    this.getAllQuestions();
+    this.getAllQuestions(event);
   }
   postQuestion() {
     const reqObj = {
@@ -33,40 +30,13 @@ export class AddPostComponent {
       isDelete: true
     }
     this.apiService.postQuestions(reqObj).subscribe(res => {
-      console.log(3, res)
-      this.getAllQuestions();
+      this.getAllQuestions(event);
     });
   }
-  PostyourAnswer(event: any) {
-    console.log(1213, event)
-    this.openAnswerBox = event;
-  }
 
-  getAllQuestions() {
+  getAllQuestions(event:any) {
     this.apiService.getQuestions().subscribe(data => {
       this.questionData = data;
-    });
-  }
-
-newAnswerPost(event:any){
-  this.questionData?.forEach((ans: any) => {
-    ans.commentLists;
-      const questionsData = ans.commentLists;
-      console.log(5, questionsData);
-      const reqObj = {
-        commentId: questionsData?.commentId,
-        content: this.postAnswer?.replace(/<\/?p[^>]*>/g, ""),
-        createdDate: questionsData?.createdDate,
-        questionId: event
-      }
-      if (ans.questionId === this.openAnswerBox ) {
-        this.apiService.saveAns(reqObj).subscribe(res => {
-          this.getAllQuestions();
-          this.postAnswer = "";
-          this.openAnswerBox = 0;
-          console.log(3, res); 
-        })
-      }
     });
   }
 }
