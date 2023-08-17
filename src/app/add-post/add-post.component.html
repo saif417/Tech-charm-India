@@ -25,11 +25,11 @@
                 </div>
             </div>
         </div>
-        <div class="newPostUser  border-bottom  border-5 border-dark d-flex p-2">
+        <div class="newPostUser d-flex p-2">
             <div class="userNameNewPostUser pe-2">
                 <div class="userName"></div>
             </div>
-            <div class="newPostUserContainer col-12 pe-2">
+            <div class="col-12 pe-2">
                 <div class="input-group pt-2 mb-3">
                     <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
                     <input type="text" class="form-control" [(ngModel)]="newPostTopic" aria-label="Sizing example input"
@@ -43,27 +43,6 @@
                 </div>
             </div>
         </div>
-
-        <div class="postedDataContaoner p-2">
-            <div *ngFor="let data of questionData">
-                <div class="d-flex justify-content-between dateSection mb-2">
-                    <span class="">{{data.userName}}</span>
-                    <span class="">{{data.dateTime}}</span>
-                </div>
-                <label class="postedheadind mb-2"><span class="text-primary fw-bold">Title :
-                    </span>{{data.question}}</label><br>
-                    <label class="postedheadind mb-2"><span class="text-primary fw-bold">Question :
-                    </span></label>
-                <div class="postedDataDetail" [innerHtml]="data.questionDescription"></div>
-                <app-comments [questionData]="questionData" 
-                (emitGetAllQuestions)="getAllQuestions($event)"> </app-comments>
-            </div>
-        </div>
+        <app-comments *ngFor="let c of src | async" [comment]="c"
+            (emitGetAllQuestions)="getAllQuestions($event)"></app-comments>
     </div>
-
-
-
-
-
-
-

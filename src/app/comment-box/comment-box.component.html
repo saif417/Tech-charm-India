@@ -1,0 +1,9 @@
+<div class="pb-4 mx-3">
+    <h2>Your Answer</h2>
+    <div class="card">
+        <p-editor [(ngModel)]="postAnswer" [style]="{ height: '100px' }"></p-editor>
+    </div>
+    <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-success mt-2" (click)="post()">Post Answer</button>
+    </div>
+</div>

@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { SignupComponent } from './signup/signup.component';
 import { AddPostComponent } from './add-post/add-post.component';
 import { CommentsComponent } from './comments/comments.component';
+import { CommentBoxComponent } from './comment-box/comment-box.component';
 // import { NgToastModule } from 'ng-angular-popup';
 
 
@@ -24,7 +25,8 @@ import { CommentsComponent } from './comments/comments.component';
     EditorComponent,
     SignupComponent,
     AddPostComponent,
-    CommentsComponent
+    CommentsComponent,
+    CommentBoxComponent,
   ],
   imports: [
     BrowserModule,

@@ -47,10 +47,10 @@ get f(): { [key: string]: AbstractControl } {
 }
 
   login() {
-    console.log(1, this.loginForm)
     this.submitted = true;
     this.apiService.loginUser(this.loginForm.value).subscribe(res => {
-      if (res.name) {
+      if (res) {
+        sessionStorage.setItem('loginDetails', JSON.stringify(res.name));
         this.service.userName.next(res.name);
         this.router.navigate(['/addPost']);
       }

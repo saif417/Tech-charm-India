@@ -21,6 +21,10 @@ export class AppComponent implements OnInit {
 
     events.subscribe((e:any)=>{
       console.log(e.urlAfterRedirects, "-----------------")
+      // this.service.userName.subscribe(res => {
+        this.userName  = sessionStorage.getItem('loginDetails');
+        console.log(7,this.userName)
+      // });
       if(e.urlAfterRedirects.includes(['login']) || e.urlAfterRedirects.includes(['signup'])){
         this.ishide = false
       } else {
@@ -30,10 +34,10 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.service.userName.subscribe(res => {
-      this.userName = res;
-      console.log(7,this.userName)
-    });
+    // this.service.userName.subscribe(res => {
+    //   this.userName = res ||  localStorage.getItem('loginDetails');;
+    //   console.log(7,this.userName)
+    // });
   }
 
   profile(){

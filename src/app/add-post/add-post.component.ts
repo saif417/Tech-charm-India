@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 import { TechCharmAPiService } from '../service/tech-charm-api.service';
+import { CommonService } from '../service/common.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-add-post',
@@ -11,14 +13,19 @@ export class AddPostComponent {
   newPostTopic: any;
   newPostDetail: any;
   postAnswer: any;
-  previousStoreData: any;
   questionData: any;
-
-  constructor(private auth: AuthService, private apiService: TechCharmAPiService) { }
+  isEditing: any;
+  commentStream$!: Observable<any>;
+  src: Observable<any>;
+  
+  constructor(private auth: AuthService, private apiService: TechCharmAPiService, private commonService: CommonService) {
+    this.src = commonService.getComments();
+   }
 
   ngOnInit() {
-    this.getAllQuestions(event);
+   this.getAllQuestions(event);
   }
+  
   postQuestion() {
     const reqObj = {
       id: this.questionData?.id,
@@ -29,14 +36,19 @@ export class AddPostComponent {
       isActive: true,
       isDelete: true
     }
-    this.apiService.postQuestions(reqObj).subscribe(res => {
+    this.apiService?.postQuestions(reqObj)?.subscribe(res => {
       this.getAllQuestions(event);
     });
   }
 
   getAllQuestions(event:any) {
-    this.apiService.getQuestions().subscribe(data => {
+    // this.apiService?.getQuestions()?.subscribe(data => {
+    //   this.questionData = data;
+    // });
+    this.commonService.getAllQuestions(event).subscribe(data => {
       this.questionData = data;
+      this.commonService.questionsList = this.questionData;
+      this.commonService.commentAction$.next(this.questionData);
     });
   }
 }

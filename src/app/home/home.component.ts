@@ -48,43 +48,6 @@ export class HomeComponent implements OnInit{
 
   ngOnInit(){
     this.listData;
-    // this.apiService.getQuestions().subscribe(data => {
-    //   this.questionData = data
-
-    // });
-  }
-  
-  // postNewData(){
-  //  let data = {
-  //   userName : 'test',
-  //   topic: this.newPostTopic,
-  //   detail: this.newPostDetail,
-  //   dateTime: new Date().getFullYear() 
-  //  }
-  //  this.listData.push(data)
-  //  console.log(456,this.listData)
-  // }
-
-  postQuestion(){
-    const reqObj = {
-      id: this.questionData?.id,
-      questionId: this.questionData?.questionId,
-      question: this.newPostTopic,
-      questionDescription: this.newPostDetail,
-      createdDate: this.questionData?.data,
-      isActive: true,
-      isDelete: true
-    }
-    this.apiService.postQuestions(reqObj).subscribe(res => {
-      console.log(3,res)
-      this.getAllQuestions();
-    });
-  }
-
-  getAllQuestions() {
-    this.apiService.getQuestions().subscribe(data => {
-      this.questionData = data
-    });
   }
 
 }
