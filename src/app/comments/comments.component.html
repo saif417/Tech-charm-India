@@ -1,20 +1,26 @@
-<div *ngFor="let data of questionData">
-    <div *ngFor="let data1 of data.commentLists">
-        <pre *ngIf="data1.content" class="ms-4  bg-light d-flex" [style]="{ height: '100px' }"> {{data1?.content}}</pre>
-        <div *ngIf="data1.content" class="text-primary fw-bold">Comments</div>
-    </div>
-    <div class=" border-bottom border-5 border-dark d-grid gap-2 pb-2 d-md-flex justify-content-md-end">
-        <button *ngIf="openAnswerBox !== data?.questionId" class="btn btn-success mt-2" (click)="PostyourAnswer(data?.questionId)">Post
-            Your Answer</button>
-            <div *ngIf="openAnswerBox == data?.questionId" class="pb-4">
-                <h2>Your Answer</h2>
-                <div class="card">
-                    <p-editor [(ngModel)]="postAnswer" [style]="{ height: '100px' }"></p-editor>
-                </div>
-                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-                    <button class="btn btn-success mt-2" (click)="newAnswerPost(data.questionId)">Post
-                        Answer</button>
-                </div>
-            </div>
+<div *ngIf="comment?.question" class="border-top border-5 border-dark">
+    <label class="postedheadind mb-2"><span class="text-primary fw-bold ms-3">Title :
+        </span>{{comment?.question}}</label><br>
+    <label class="postedheadind mb-2"><span class="text-primary fw-bold ms-3">Question :
+        </span></label>
+    <div class="postedDataDetail ms-3" [innerHtml]="comment?.questionDescription"></div>
+</div>
+<div *ngIf="comment?.question">
+    <button class="btn btn-success mt-2 mb-2 ms-3" (click)="openAnswerBox(comment)">Post
+        Your Answer</button>
+    <app-comment-box (add)="newPost($event)" *ngIf="comment?.answer"></app-comment-box><br>
+</div>
+<div *ngIf="comment?.commentLists?.length">
+    <div *ngFor="let data of comment.commentLists; let i = index">
+        <label class="postedheadind mb-2"><span class=" ms-3 text-primary fw-bold">Comment:</span></label><br>
+        <div class="d-flex">
+            <div class="ps-2 user">{{userName}}</div>
+            <div class="ps-3">{{ getTimeAgo(data?.createdDate) }}</div>
+        </div>
+        <div class="ps-4 ms-3" [innerHtml]="data?.content"></div>
+        <a class="mt-4 text-decoration-none ms-3" (click)="toggleReplyBox(i)">Reply to Answer</a>
+        <hr>
+        <app-comment-box (add)="onAdd($event)" *ngIf="data.replyOpen"></app-comment-box>
     </div>
 </div>
+<app-comments *ngFor="let c of comment.commentLists" [comment]="c"></app-comments>  
