@@ -14,12 +14,15 @@ export class CommentsComponent {
   answerBox: any;
   postAnswer: any;
   isEditing: any;
-  userName: any | null;
+  userName: any;
   activeReplyIndex: number = -1;
   constructor(private apiService: TechCharmAPiService, private commonService: CommonService) { }
 
   ngOnInit() {
-    this.userName = sessionStorage.getItem('loginDetails');
+let userNameWithQuotes = sessionStorage.getItem("loginDetails");
+if (userNameWithQuotes !== null) {
+  this.userName = userNameWithQuotes.replace(/"/g, '');
+}
   }
 
   openAnswerBox(event: any) {
