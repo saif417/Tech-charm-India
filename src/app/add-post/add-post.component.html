@@ -34,10 +34,10 @@
                     <span class="input-group-text" id="inputGroup-sizing-default">Title</span>
                     <input type="text" class="form-control" [(ngModel)]="newPostTopic" aria-label="Sizing example input"
                         aria-describep-editor-containerdby="inputGroup-sizing-default">
-                </div>
-                <div class="card">
-                    <p-editor [(ngModel)]="newPostDetail" [style]="{ height: '300px' }"></p-editor>
-                </div>
+                    </div>
+                    <div class="card">
+                        <p-editor [(ngModel)]="newPostDetail" [style]="{ height: '300px' }"></p-editor>
+                    </div>
                 <div class="postbutton">
                     <button class="btn btn-success mt-2" (click)="postQuestion()">Post</button>
                 </div>
@@ -45,4 +45,4 @@
         </div>
         <app-comments *ngFor="let c of src | async" [comment]="c"
             (emitGetAllQuestions)="getAllQuestions($event)"></app-comments>
-    </div>
+        </div>

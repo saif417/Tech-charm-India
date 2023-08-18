@@ -11,8 +11,9 @@ const routes: Routes = [
   // {path:'',component:HomeComponent},
   // {path: '**', redirectTo:'login',pathMatch:'full'},
   {path: '', redirectTo:'login',pathMatch:'full'},
-  {path: 'home',component:HomeComponent},
+  {path: 'Tags',component:HomeComponent},
   {path: 'addPost',component:AddPostComponent},
+  {path: 'questions',component:AddPostComponent},
   {path: 'login',component:LoginComponent},
   {path: 'editor',component:EditorComponent},
   {path: 'signup',component:SignupComponent}

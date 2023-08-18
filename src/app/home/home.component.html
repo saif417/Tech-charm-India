@@ -1,0 +1,14 @@
+<div class="tags">
+    <h1>Tags</h1>
+    <h5>
+        A tag is a keyword or label that categorizes your question with other, similar questions. Using the right tags makes it easier for others to find and answer your question.
+    </h5>
+    <div class="ms-5 w-100 tag-list d-grid grid__4 lg:grid__3 md:grid__2 sm:grid__1 g12">
+        <div *ngFor="let tag of tags" class="tag">
+            <h3>{{ tag.name }}</h3>
+            <p>{{ tag.description }}</p>
+            <p>Usage Count: {{ tag.usageCount }}</p>
+            <!-- Add links to tag pages or related tags here -->
+        </div>
+    </div>
+</div>

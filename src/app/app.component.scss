@@ -89,8 +89,9 @@ li {
     width: 15rem;
     height: inherit;
     margin-top: 7rem;
-    background-color: lightblue;
+    background-color: #fff;
     position: fixed;
+    border-right: ridge;
 }
 
 .right-container {
@@ -180,7 +181,7 @@ li {
 }
 
 .menu-bar a {
-    color: #ffff;
+    color: black;
 }
 
 .postbutton button {

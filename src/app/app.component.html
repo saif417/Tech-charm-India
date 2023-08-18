@@ -44,10 +44,11 @@
 
 <div class="containerBody">
     <div class="sub-container pt-2">
-        <div class="left-container" *ngIf="ishide">
+        <div class="left-container" *ngIf="ishide"><br><br>
+            <div class="bg-light fw-bold">Products</div>
             <ul class="menu-bar p-2">
-                <li><i class="fa-solid fa-magnifying-glass"></i><a href="">commin soon</a> </li>
-                <li><i class="fa-solid fa-magnifying-glass"></i> <a href="">commin soon</a></li>
+                <li><i class="fa-solid fa-magnifying-glass"></i><a href="questions">Questions</a> </li>
+                <li><i class="fa-solid fa-magnifying-glass"></i> <a routerLink="Tags">Tags</a></li>
             </ul>
         </div>
 
@@ -55,4 +56,4 @@
             <router-outlet></router-outlet>
         </div>
     </div>
-  </div>
+</div>
